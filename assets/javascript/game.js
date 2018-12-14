@@ -19,7 +19,7 @@ console.log(computerGuess);
 var winsText = document.getElementById("wins-text");
 var lossesText = document.getElementById("losses-text");
 var attemptsText = document.getElementById("attempts-left");
-
+var lettersGuessedText = document.getElementById("letters-guessed")
 
 //what happens when the user presses a key
 document.onkeyup = function(event) {
@@ -42,12 +42,9 @@ document.onkeyup = function(event) {
   alert("You lose. Try again.")
   reset();
   }
-  
 
   winsText.textContent = "Wins: " + wins;
   lossesText.textContent = "Losses: " + losses;
   attemptsText.textContent = "Attempts left: " + attemptsLeft;
-  lettersGuessed.textContent = "Letters guessed: " + lettersGuessed
-
-
+  lettersGuessedText.textContent = "Letters guessed: " + lettersGuessed
 }; 
