@@ -6,6 +6,7 @@ var wins = 0;
 var losses = 0;
 var attemptsLeft = 10;
 var lettersGuessed = []
+var computerGuess;
 
 //reset function
 function reset() {
@@ -13,7 +14,9 @@ lettersGuessed = []
 attemptsLeft = 10;
 computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 console.log(computerGuess);
-}
+};
+
+reset();
 
 //linking variables to html
 var winsText = document.getElementById("wins-text");
@@ -26,7 +29,6 @@ document.onkeyup = function(event) {
   userGuess = event.key;
 
 //computer chooses letter
-  var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
   if (userGuess === computerGuess) {
   wins++
   alert("You win!")
@@ -41,6 +43,11 @@ document.onkeyup = function(event) {
   losses++
   alert("You lose. Try again.")
   reset();
+  }
+
+  if (!computerChoices.includes(userGuess)) {
+    alert("Pick a letter.")
+    attemptsLeft++
   }
 
   winsText.textContent = "Wins: " + wins;
