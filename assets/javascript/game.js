@@ -5,11 +5,49 @@ var computerChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l
 var wins = 0;
 var losses = 0;
 var attemptsLeft = 10;
+var lettersGuessed = []
+
+//reset function
+function reset() {
+lettersGuessed = []
+attemptsLeft = 10;
+computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+console.log(computerGuess);
+}
 
 //linking variables to html
 var winsText = document.getElementById("wins-text");
-var lossesTest = document.getElementById("losses-text");
+var lossesText = document.getElementById("losses-text");
 var attemptsText = document.getElementById("attempts-left");
 
+
 //what happens when the user presses a key
-document.onkeyup = function(event);
+document.onkeyup = function(event) {
+  userGuess = event.key;
+
+//computer chooses letter
+  var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+  if (userGuess === computerGuess) {
+  wins++
+  alert("You win!")
+  reset();
+  }
+
+  else (userGuess !== computerGuess); 
+  attemptsLeft--
+  lettersGuessed.push(userGuess);
+
+  if (attemptsLeft === 0) {
+  losses++
+  alert("You lose. Try again.")
+  reset();
+  }
+  
+
+  winsText.textContent = "Wins: " + wins;
+  lossesText.textContent = "Losses: " + losses;
+  attemptsText.textContent = "Attempts left: " + attemptsLeft;
+  lettersGuessed.textContent = "Letters guessed: " + lettersGuessed
+
+
+}; 
